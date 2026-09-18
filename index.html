@@ -166,11 +166,13 @@
     <section class="trial section-shell" id="trial">
       <div><p class="eyebrow"><span class="eyebrow-line"></span> Your first step</p><h2>COME SEE<br><em>FOR YOURSELF.</em></h2></div>
       <form class="trial-form" id="trial-form">
-        <label>First name<input type="text" name="name" placeholder="Alex" required></label>
-        <label>Email<input type="email" name="email" placeholder="alex@email.com" required></label>
-        <label>What are you looking for?<select name="goal"><option>Find my training lane</option><option>Day Pass</option><option>Monthly Unlimited</option><option>Personal Coaching</option><option>Get stronger</option><option>Build conditioning</option><option>Work with a coach</option></select></label>
-        <button class="button button-light" type="submit">Book my free trial <span>↗</span></button>
+        <label>Full Name<input type="text" name="name" placeholder="Alex Santos" autocomplete="name" required></label>
+        <label>Phone Number / Viber<input type="tel" name="phone" placeholder="09XX XXX XXXX" autocomplete="tel" required></label>
+        <label>Preferred Program<select name="program" required><option value="" disabled selected>Select a program</option><option>Build Strong</option><option>Engine Room</option><option>One on One</option></select></label>
+        <label>Preferred Date &amp; Time<input type="datetime-local" name="preferred-time" required></label>
+        <button class="button button-light" type="submit">Claim Free Trial Pass <span>↗</span></button>
         <p class="form-message" role="status" aria-live="polite"></p>
+        <a class="messenger-link" href="https://www.facebook.com/share/1PPrF4Tvsj/" target="_blank" rel="noopener noreferrer"><span class="messenger-icon" aria-hidden="true">✉</span> Or message us directly on Messenger <span>↗</span></a>
       </form>
     </section>
   </main>

@@ -32,8 +32,13 @@ filterButtons.forEach((button) => {
 
 choosePlanLinks.forEach((link) => {
   link.addEventListener('click', () => {
-    const goal = trialForm.querySelector('select[name="goal"]');
-    goal.value = link.dataset.plan;
+    const program = trialForm.querySelector('select[name="program"]');
+    const planMap = {
+      'Day Pass': 'Build Strong',
+      'Monthly Unlimited': 'Engine Room',
+      'Personal Coaching': 'One on One'
+    };
+    program.value = planMap[link.dataset.plan] || '';
   });
 });
 
