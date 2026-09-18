@@ -2,6 +2,7 @@ const menuToggle = document.querySelector('.menu-toggle');
 const siteNav = document.querySelector('.site-nav');
 const filterButtons = document.querySelectorAll('.filter-button');
 const programCards = document.querySelectorAll('.program-card');
+const choosePlanLinks = document.querySelectorAll('.choose-plan');
 const trialForm = document.querySelector('#trial-form');
 const formMessage = document.querySelector('.form-message');
 
@@ -26,6 +27,13 @@ filterButtons.forEach((button) => {
     programCards.forEach((card) => {
       card.hidden = filter !== 'all' && card.dataset.category !== filter;
     });
+  });
+});
+
+choosePlanLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    const goal = trialForm.querySelector('select[name="goal"]');
+    goal.value = link.dataset.plan;
   });
 });
 
