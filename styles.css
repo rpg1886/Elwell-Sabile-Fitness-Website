@@ -35,8 +35,6 @@ h1 em, h2 em { color: var(--orange); font-style: normal; }
 .hero-image-wrap::after { background: var(--lime); content: ''; height: 75px; position: absolute; right: 0; top: 0; width: 75px; }
 .hero-image-wrap img, .program-card img, .story-image img { height: 100%; object-fit: cover; width: 100%; }
 .hero-image-wrap img { filter: saturate(.82); }
-.image-stamp { align-items: center; background: var(--lime); border: 3px solid var(--orange); color: var(--ink); display: flex; flex-direction: column; font-family: var(--display); font-size: 13px; font-weight: 700; height: 108px; justify-content: center; letter-spacing: .08em; line-height: .9; position: absolute; right: 25px; text-align: center; text-shadow: 0 1px 0 rgba(228, 228, 220, .45); top: 25px; width: 108px; z-index: 1; }
-.image-stamp strong { font-size: 30px; letter-spacing: .02em; margin-top: 6px; }
 .image-caption { display: flex; font-family: var(--display); font-size: 12px; justify-content: space-between; letter-spacing: .08em; margin: 13px 0 0; text-transform: uppercase; }
 .image-caption span { color: var(--orange); }
 .proof-band { background: var(--ink); color: var(--cream); }
