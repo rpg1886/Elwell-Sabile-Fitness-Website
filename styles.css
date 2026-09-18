@@ -32,7 +32,6 @@ h1 em, h2 em { color: var(--orange); font-style: normal; }
 .text-link span { color: var(--orange); font-size: 16px; margin-left: 10px; }
 .hero-visual { position: relative; }
 .hero-image-wrap { height: 585px; overflow: hidden; position: relative; }
-.hero-image-wrap::after { background: var(--lime); content: ''; height: 75px; position: absolute; right: 0; top: 0; width: 75px; }
 .hero-image-wrap img, .program-card img, .story-image img { height: 100%; object-fit: cover; width: 100%; }
 .hero-image-wrap img { filter: saturate(.82); }
 .image-caption { display: flex; font-family: var(--display); font-size: 12px; justify-content: space-between; letter-spacing: .08em; margin: 13px 0 0; text-transform: uppercase; }
