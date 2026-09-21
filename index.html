@@ -3,12 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Elwell Sabile Fitness is a fitness gym in San Fernando, Pampanga for people who want to train with purpose.">
-  <title>Elwell Sabile Fitness | Train With Purpose</title>
+  <meta name="description" content="Elwell Sabile Fitness is a gym in San Fernando, Pampanga offering personal training in San Isidro, strength &amp; conditioning coaching, and a free 1-day trial pass.">
+  <title>Elwell Sabile Fitness | Gym in San Fernando, Pampanga</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Elwell Sabile Fitness">
+  <meta property="og:title" content="Elwell Sabile Fitness | Gym in San Fernando, Pampanga">
+  <meta property="og:description" content="Boutique strength, conditioning, and personal training gym at 2F Alphamed Bldg., San Isidro, San Fernando, Pampanga. Claim your free 1-day trial pass.">
+  <meta property="og:image" content="images/hero-banner.jpg">
+  <meta property="og:locale" content="en_PH">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Elwell Sabile Fitness | Gym in San Fernando, Pampanga">
+  <meta name="twitter:description" content="Strength, conditioning, and personal training in San Isidro, San Fernando, Pampanga. Claim your free 1-day trial pass.">
+  <meta name="twitter:image" content="images/hero-banner.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <!-- TODO (owner confirmation needed): add <link rel="canonical"> and og:url once the production domain is confirmed. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ExerciseGym",
+    "name": "Elwell Sabile Fitness",
+    "description": "Boutique strength, conditioning, and personal training gym in San Fernando, Pampanga.",
+    "image": "images/hero-banner.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2F Alphamed Bldg., San Isidro",
+      "addressLocality": "San Fernando",
+      "addressRegion": "Pampanga",
+      "addressCountry": "PH"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "06:00",
+        "closes": "21:00"
+      }
+    ],
+    "priceRange": "\u20b1200 - \u20b15,000"
+  }
+  </script>
+  <!-- TODO (owner confirmation needed): "geo" coordinates and "telephone" were omitted from the schema above because no verified values exist in the project yet. Add them once confirmed. -->
 </head>
 <body>
   <header class="site-header">
@@ -59,13 +96,13 @@
     <section class="programs section-shell" id="programs">
       <div class="section-heading">
         <div><p class="eyebrow"><span class="eyebrow-line"></span> Find your focus</p><h2>TRAINING<br><em>THAT FITS.</em></h2></div>
-        <p class="section-intro">No one-size-fits-all plans here. Choose a lane, find your people, and let the work compound.</p>
+        <p class="section-intro">No one-size-fits-all plans at our fitness center in Pampanga. Choose a lane, find your people, and let the work compound.</p>
       </div>
       <div class="program-filter" role="tablist" aria-label="Filter programs">
-        <button class="filter-button active" type="button" data-filter="all">All programs</button>
-        <button class="filter-button" type="button" data-filter="strength">Strength</button>
-        <button class="filter-button" type="button" data-filter="conditioning">Conditioning</button>
-        <button class="filter-button" type="button" data-filter="personal">Personal</button>
+        <button class="filter-button active" type="button" role="tab" aria-selected="true" data-filter="all">All programs</button>
+        <button class="filter-button" type="button" role="tab" aria-selected="false" data-filter="strength">Strength</button>
+        <button class="filter-button" type="button" role="tab" aria-selected="false" data-filter="conditioning">Conditioning</button>
+        <button class="filter-button" type="button" role="tab" aria-selected="false" data-filter="personal">Personal</button>
       </div>
       <div class="program-grid">
         <article class="program-card program-large" data-category="strength">
@@ -86,7 +123,7 @@
     <section class="membership section-shell" id="membership">
       <div class="section-heading membership-heading">
         <div><p class="eyebrow"><span class="eyebrow-line"></span> Membership &amp; rates</p><h2>CHOOSE<br><em>YOUR PLAN.</em></h2></div>
-        <p class="section-intro">Straightforward options for every stage of your training. Pick what fits, then let us help you get started.</p>
+        <p class="section-intro">Straightforward options for every stage of your training, from a day pass to one-on-one personal training in San Isidro. Pick what fits, then let us help you get started.</p>
       </div>
       <div class="membership-grid">
         <article class="membership-card">
@@ -188,11 +225,15 @@
 
     <section class="trial section-shell" id="trial">
       <div><p class="eyebrow"><span class="eyebrow-line"></span> Your first step</p><h2>COME SEE<br><em>FOR YOURSELF.</em></h2></div>
-      <form class="trial-form" id="trial-form">
+      <form class="trial-form" id="trial-form" action="https://api.web3forms.com/submit" method="POST" data-web3forms="true">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="New Free Trial Pass Request - Elwell Sabile Fitness">
+        <input type="hidden" name="from_name" value="Elwell Sabile Fitness Website">
+        <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off">
         <label>Full Name<input type="text" name="name" placeholder="Alex Santos" autocomplete="name" required></label>
         <label>Phone Number / Viber<input type="tel" name="phone" placeholder="09XX XXX XXXX" autocomplete="tel" required></label>
         <label>Preferred Program<select name="program" required><option value="" disabled selected>Select a program</option><option>Build Strong</option><option>Engine Room</option><option>One on One</option></select></label>
-        <label>Preferred Date &amp; Time<input type="datetime-local" name="preferred-time" required></label>
+        <label>Preferred Date &amp; Time <span class="label-optional">(optional)</span><input type="datetime-local" name="preferred-time"></label>
         <button class="button button-light" type="submit">Claim Free Trial Pass <span>↗</span></button>
         <p class="form-message" role="status" aria-live="polite"></p>
         <a class="messenger-link" href="https://www.facebook.com/share/1PPrF4Tvsj/" target="_blank" rel="noopener noreferrer"><span class="messenger-icon" aria-hidden="true">✉</span> Or message us directly on Messenger <span>↗</span></a>
@@ -207,6 +248,7 @@
     <div class="location-details">
       <p class="eyebrow"><span class="eyebrow-line"></span> Find us</p>
       <h2>COME<br><em>THROUGH.</em></h2>
+      <p class="location-tagline">Your neighborhood gym in San Fernando, Pampanga &mdash; proudly serving San Isidro and nearby barangays.</p>
       <div class="location-list">
         <div><strong>Full address</strong><p>2F Alphamed bldg. San Isidro, San Fernando, Pampanga, Philippines</p></div>
         <div><strong>Operating hours</strong><p>Monday – Saturday: 6:00 AM – 9:00 PM<br>Sunday: Closed</p></div>
@@ -215,7 +257,14 @@
     </div>
   </section>
 
-  <footer class="site-footer section-shell"><a class="logo" href="#top"><span class="logo-mark">E</span><span>ELWELL<span class="logo-accent">/</span>SABILE</span></a><p>San Fernando<br>Pampanga, Philippines</p><p>Training with purpose<br>Every day</p><p class="footer-end">© 2026 Elwell Sabile Fitness</p></footer>
+  <footer class="site-footer section-shell"><a class="logo" href="#top"><span class="logo-mark">E</span><span>ELWELL<span class="logo-accent">/</span>SABILE</span></a><p>Gym in San Fernando<br>Pampanga, Philippines</p><p>Training with purpose<br>Every day</p><p class="footer-end">© 2026 Elwell Sabile Fitness</p></footer>
+
+  <!-- Mobile sticky CTA bar (below 768px). Call/Viber button requires the owner's confirmed phone number before it can be added. -->
+  <div class="mobile-cta-bar" role="region" aria-label="Quick contact actions">
+    <a class="mobile-cta-btn mobile-cta-secondary" href="https://www.facebook.com/share/1PPrF4Tvsj/" target="_blank" rel="noopener noreferrer">✉ Message Us</a>
+    <a class="mobile-cta-btn mobile-cta-primary" href="#trial">Claim Free Pass</a>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

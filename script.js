@@ -23,7 +23,11 @@ document.querySelectorAll('.site-nav a').forEach((link) => {
 filterButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const filter = button.dataset.filter;
-    filterButtons.forEach((item) => item.classList.toggle('active', item === button));
+    filterButtons.forEach((item) => {
+      const isActive = item === button;
+      item.classList.toggle('active', isActive);
+      item.setAttribute('aria-selected', String(isActive));
+    });
     programCards.forEach((card) => {
       card.hidden = filter !== 'all' && card.dataset.category !== filter;
     });
@@ -44,7 +48,36 @@ choosePlanLinks.forEach((link) => {
 
 trialForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  const name = new FormData(trialForm).get('name');
-  formMessage.textContent = `Thanks, ${name}. We will be in touch to plan your first session.`;
-  trialForm.reset();
+  const formData = new FormData(trialForm);
+  const name = formData.get('name');
+  const accessKey = formData.get('access_key') || '';
+
+  const showConfirmation = () => {
+    formMessage.textContent = `Thanks, ${name}. We will be in touch to plan your first session.`;
+    trialForm.reset();
+  };
+
+  // Web3Forms access key has not been configured yet, so keep the local confirmation only.
+  if (!accessKey || accessKey.startsWith('YOUR_')) {
+    showConfirmation();
+    return;
+  }
+
+  formMessage.textContent = 'Sending...';
+  fetch(trialForm.action, {
+    method: 'POST',
+    body: formData,
+    headers: { Accept: 'application/json' }
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        showConfirmation();
+      } else {
+        formMessage.textContent = 'Something went wrong. Please message us on Messenger instead.';
+      }
+    })
+    .catch(() => {
+      formMessage.textContent = 'Something went wrong. Please message us on Messenger instead.';
+    });
 });

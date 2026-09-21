@@ -83,8 +83,10 @@ The design intentionally uses the existing palette instead of the carbon/orange 
 
 10. **Trial form**
     - The `#trial` section is the primary conversion block.
-    - Collects name, phone/Viber number, preferred program, and preferred date/time.
-    - Displays an inline status message after client-side submission.
+    - Collects name, phone/Viber number, preferred program, and an optional preferred date/time (marked "(optional)" to keep required fields to the three called for in the project brief).
+    - The form now posts to Web3Forms (`action="https://api.web3forms.com/submit"`, `method="POST"`, `data-web3forms="true"`) with hidden `access_key`, `subject`, `from_name` fields and a hidden honeypot checkbox (`botcheck`) for spam control.
+    - The `access_key` value is a placeholder (`YOUR_WEB3FORMS_ACCESS_KEY`) pending the owner's real Web3Forms key; until it is replaced, JavaScript intentionally skips the network call and shows only the local confirmation message so the page keeps working exactly as before.
+    - Displays an inline status message after submission (local confirmation, or a Web3Forms success/error response once a real key is set).
     - Provides a Facebook Messenger fallback link.
 
 11. **Location**
@@ -92,8 +94,13 @@ The design intentionally uses the existing palette instead of the carbon/orange 
     - Displays the address, operating hours, and amenities.
 
 12. **Footer**
-    - Repeats the brand and location context.
+    - Repeats the brand and location context, including the "Gym in San Fernando" phrase for local SEO.
     - Displays the copyright year and short positioning copy.
+
+13. **Mobile sticky CTA bar**
+    - Below 768px, a fixed bottom bar offers "Message Us" (Messenger, real link) and "Claim Free Pass" (`#trial`) actions, each at least 48px tall.
+    - `env(safe-area-inset-bottom)` padding avoids notch/home-indicator overlap, and `body` gains matching bottom padding on mobile so the bar never covers footer content.
+    - A Call/Viber button was intentionally omitted because no verified phone/Viber number exists in the project; see gaps below.
 
 ## JavaScript behavior
 
@@ -103,7 +110,7 @@ Clicking `.menu-toggle` toggles the `open` class on `.site-nav`, updates `aria-e
 
 ### Program filtering
 
-Each `.filter-button` reads its `data-filter` value. The active button receives the `active` class, and each `.program-card` is hidden unless its `data-category` matches the selected filter or the filter is `all`.
+Each `.filter-button` reads its `data-filter` value. The active button receives the `active` class and `aria-selected="true"` (siblings get `aria-selected="false"`), and each `.program-card` is hidden unless its `data-category` matches the selected filter or the filter is `all`. The buttons use `role="tab"` inside the existing `role="tablist"` container.
 
 ### Membership-to-program preselection
 
@@ -117,7 +124,7 @@ The selected program is written into the trial form before the anchor navigation
 
 ### Trial form response
 
-The submit handler prevents the browser's default form submission, reads the visitor's name with `FormData`, displays a personalized confirmation message, and resets the form. This is currently a local browser interaction only.
+The submit handler prevents the browser's default form submission and reads the visitor's name with `FormData`. If the Web3Forms `access_key` is still the placeholder value, it shows a personalized local confirmation message and resets the form (unchanged behavior). Once a real access key is set, it instead `fetch`es the form to Web3Forms, shows the same personalized confirmation on success, or an error message pointing to Messenger on failure.
 
 ## Responsive behavior
 
@@ -146,11 +153,9 @@ Items to preserve or improve:
 
 ## Current functional gaps and deployment risks
 
-- The trial form has no `action`, `method`, `data-netlify`, or `data-web3forms` configuration. The current JavaScript prevents submission, so visitor details are not delivered to the business.
-- The form requests Preferred Date & Time in addition to the three fields specified by the project brief. Any future lead-form revision should confirm whether this additional field is intentional.
-- The README requests a mobile sticky action bar, but the current HTML/CSS does not implement one.
-- No Viber link is currently present; Messenger is the only direct-message fallback.
-- There is no `ExerciseGym` JSON-LD schema, canonical URL, Open Graph metadata, or explicit geo-coordinate metadata in `index.html`.
+- The trial form now has Web3Forms `action`/`method`/`data-web3forms` wiring, but `access_key` is a placeholder (`YOUR_WEB3FORMS_ACCESS_KEY`). **Owner action needed:** create a Web3Forms account, get a real access key, and replace the placeholder in `index.html` for leads to actually reach the business.
+- The mobile sticky CTA bar now exists (Message Us + Claim Free Pass) but does not include a Call/Viber button. **Owner action needed:** supply a verified business phone/Viber number so a `tel:`/Viber link can be added to the bar and elsewhere without fabricating contact data.
+- `ExerciseGym` JSON-LD, Open Graph, and Twitter Card metadata were added using only facts already published on the page (name, address, opening hours, price range). **Owner action needed:** confirm the production domain (for canonical/`og:url`) and verified geo-coordinates/telephone before adding them to the schema.
 - The Google Maps iframe is functional-looking but should be checked against the verified business listing.
 - `netlify.toml` publishes `code`, while the current workspace files are at the repository root and no `code` directory is present. Netlify deployment will need either a matching directory or an updated publish path.
 - Schedule dates are hard-coded and should be maintained as content rather than assumed to remain current.
