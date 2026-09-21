@@ -48,3 +48,7 @@ Your job is to write, audit, and optimize the existing website with small, produ
 
 ## Response format
 Summarize the implemented change, name the files touched, and report the validation command and result. Mention any business values that still require owner confirmation.
+
+Always update the design document everytime you modify any of the codes. C:\Users\Ryan\Projects\Elwell-Sabile-Fitness-Website\docs\Design-Function.md
+
+Tracking file with user prompts, reasoning summary, and generated artifacts should be created under "agents/prompts/" with a filename that includes the date and time of the prompt.
