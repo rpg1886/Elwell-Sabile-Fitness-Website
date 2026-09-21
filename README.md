@@ -42,3 +42,9 @@ When tasked with creating, updating, or reviewing website code:
 1. Ensure all standard Call-to-Action (CTA) buttons link directly to functional lead capture blocks or direct chat handles.
 2. Provide clean, modular, and copy-pasteable HTML/Tailwind CSS blocks.
 3. Validate that mobile layouts never stack elements awkwardly and that touch targets (buttons) are at least 44px tall for optimal tap response.
+
+
+
+Always update the design document everytime you modify any of the codes. C:\Users\Ryan\Projects\777-Electrical-Website\docs\Design-Function.md
+
+tracking file with user prompts, reasoning summary, and generated artifcats. should be created under "agents/prompts/" with a filename that includes the date and time of the prompt
